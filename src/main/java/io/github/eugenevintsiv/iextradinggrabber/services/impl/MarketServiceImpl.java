@@ -16,6 +16,8 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service("marketServiceImpl")
@@ -42,6 +44,11 @@ public class MarketServiceImpl implements MarketService {
         marketRepository.deleteAllByCompanySymbolIgnoreCaseIn(marketData.keySet());
         marketRepository.saveAll(newMarkets);
         return marketMapper.toMarketDto(newMarkets);
+    }
+
+    @Override
+    public Set<String> getAllSymbols() {
+        return marketRepository.findAll().stream().map(Market::getCompanySymbol).collect(Collectors.toSet());
     }
 
 }
