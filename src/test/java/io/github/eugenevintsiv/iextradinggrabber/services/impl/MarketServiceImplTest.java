@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
@@ -42,7 +42,7 @@ public class MarketServiceImplTest {
         final String shouldRequestSymbolsStr = "FB,AAPL";
         final String shouldRequestTypesStr = "quote,logo,company,price,chart";
         final String shouldRequestRangeStr = "1m";
-        when(marketClient.getMarketData(anyString(), anyString(), anyString())).thenReturn(new ArrayList<>());
+        when(marketClient.getMarketData(anyString(), anyString(), anyString())).thenReturn(new HashMap<>());
 
         marketService.receiveFromExternal(filterParams);
         verify(marketClient, times(1)).getMarketData(shouldRequestSymbolsStr, shouldRequestTypesStr, shouldRequestRangeStr);

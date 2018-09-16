@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,5 +18,12 @@ public class Market {
 
     @Id
     private String id;
+
+    private String companySymbol;
+    private String companyName;
+    private String sector;
+    private String logoUrl;
+    private List<MarketPrice> prices;
+    private List<MarketPriceChart> priceCharts;
 
 }

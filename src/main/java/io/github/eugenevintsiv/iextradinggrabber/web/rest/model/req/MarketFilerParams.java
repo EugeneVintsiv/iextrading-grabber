@@ -17,17 +17,17 @@ import java.util.Set;
 @AllArgsConstructor
 public class MarketFilerParams {
     @NotEmpty
-    @ApiModelProperty(notes = "companies abbrevs")
+    @ApiModelProperty(notes = "companies abbrevs", required = true)
     private final Set<String> symbols;
 
     @NotNull
     @Positive
-    @ApiModelProperty(notes = "count of periods")
+    @ApiModelProperty(notes = "count of periods", required = true)
     private final Integer rangeCount;
 
     @NotBlank
     @EnumValidator(enumClazz=IexRangeType.class)
-    @ApiModelProperty(allowableValues = "DAY, MONTH, YEAR", notes = "type of period")
+    @ApiModelProperty(allowableValues = "DAY, MONTH, YEAR", notes = "type of period", required = true)
     private final String rangeType;
 
 
