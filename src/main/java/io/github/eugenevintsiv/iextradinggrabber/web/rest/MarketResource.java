@@ -1,6 +1,7 @@
 package io.github.eugenevintsiv.iextradinggrabber.web.rest;
 
 import io.github.eugenevintsiv.iextradinggrabber.services.MarketService;
+import io.github.eugenevintsiv.iextradinggrabber.web.rest.model.req.MarketFilerParams;
 import io.github.eugenevintsiv.iextradinggrabber.web.rest.model.resp.MarketDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Api(value = "Market resource", description = "Provides an API to receive data from IexTrading Platform")
@@ -26,8 +28,8 @@ public class MarketResource {
 
     @GetMapping
     @ApiOperation("Returns data received from IexTrading Platform. Filtering support.")
-    public ResponseEntity<List<MarketDto>> getAll() {
-        final List<MarketDto> markets = marketService.receiveFromExternal();
+    public ResponseEntity<List<MarketDto>> getAll(@Valid MarketFilerParams filterParams) {
+        final List<MarketDto> markets = marketService.receiveFromExternal(filterParams);
         return ResponseEntity.ok(markets);
     }
 
