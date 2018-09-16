@@ -29,7 +29,7 @@ public class MarketDto {
     @ApiModelProperty(value = "Url to company logo")
     private String logoUrl;
     @ApiModelProperty(value = "List of company prices at different states(types)")
-    private List<MarketPriceDto> prices = new ArrayList<>();
+    private List<PriceDto> prices = new ArrayList<>();
     @ApiModelProperty(value = "List of prices per dates")
-    private List<MarketPriceChartDto> priceCharts = new ArrayList<>();
+    private List<PriceChartDto> priceCharts = new ArrayList<>();
 }

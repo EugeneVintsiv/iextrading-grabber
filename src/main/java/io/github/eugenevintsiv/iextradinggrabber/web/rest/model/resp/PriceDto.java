@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "Provide info about prices at different states(types)")
-public class MarketPriceDto {
+public class PriceDto {
 
     @ApiModelProperty(value = "Price state(type)")
     private PriceType type;

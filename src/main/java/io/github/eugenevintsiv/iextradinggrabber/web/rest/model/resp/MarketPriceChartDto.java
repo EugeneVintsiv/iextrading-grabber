@@ -3,26 +3,27 @@ package io.github.eugenevintsiv.iextradinggrabber.web.rest.model.resp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Data
 @AllArgsConstructor
+@Getter
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @ApiModel(description = "Provide info about prices per date")
-public class MarketPriceChartDto {
+public class MarketPriceChartDto extends PriceChartDto {
 
-    @ApiModelProperty(value = "Date for prices charts")
-    private LocalDate date;
-    @ApiModelProperty(value = "Company price at open")
-    private BigDecimal openPrice;
-    @ApiModelProperty(value = "Company high price per day")
-    private BigDecimal highPrice;
-    @ApiModelProperty(value = "Company price at close")
-    private BigDecimal closePrice;
-    @ApiModelProperty(value = "Company vwap price")
-    private BigDecimal vwapPrice;
+    @ApiModelProperty(value = "Company Symbol(Abbrev) value")
+    private String companySymbol;
+
+    @Builder
+    public MarketPriceChartDto(LocalDate date, BigDecimal openPrice, BigDecimal highPrice, BigDecimal closePrice, BigDecimal vwapPrice, String companySymbol) {
+        super(date, openPrice, highPrice, closePrice, vwapPrice);
+        this.companySymbol = companySymbol;
+    }
 }

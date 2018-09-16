@@ -72,6 +72,7 @@ public class IexMarketInfoMapper {
     private static MarketPriceChart buildMarketPrice(ChartResponse c) {
         return MarketPriceChart.builder()
                 .date(c.getDate())
+                .highPrice(toBigDecimal(c.getHigh()))
                 .openPrice(toBigDecimal(c.getOpen()))
                 .closePrice(toBigDecimal(c.getClose()))
                 .vwapPrice(toBigDecimal(c.getVwap()))
